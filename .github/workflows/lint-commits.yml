@@ -30,7 +30,12 @@ jobs:
 
       - name: Validate last 20 commits from current with commitlint
         if: github.event_name == 'push'
-        run: npx commitlint --from HEAD~20 --to HEAD --verbose
+        run: |
+          if git rev-parse HEAD~20 >/dev/null 2>&1; then
+            npx commitlint --from HEAD~20 --to HEAD --verbose
+          else
+            npx commitlint --from $(git rev-list --max-parents=0 HEAD) --to HEAD --verbose
+          fi
 
       - name: Validate PR commits with commitlint
         if: github.event_name == 'pull_request'
