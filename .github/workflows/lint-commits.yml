@@ -28,13 +28,16 @@ jobs:
           npm --version
           npx commitlint --version
 
-      - name: Validate last 20 commits from current with commitlint
+      - name: Validate new commits with commitlint
         if: github.event_name == 'push'
         run: |
-          if git rev-parse HEAD~20 >/dev/null 2>&1; then
-            npx commitlint --from HEAD~20 --to HEAD --verbose
+          # For push events, only validate commits between before and after
+          if [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+            # Normal push: validate commits between before and after SHA
+            npx commitlint --from ${{ github.event.before }} --to ${{ github.event.after }} --verbose
           else
-            npx commitlint --from $(git rev-list --max-parents=0 HEAD) --to HEAD --verbose
+            # First push to branch: validate only the current commit
+            npx commitlint --from HEAD~1 --to HEAD --verbose
           fi
 
       - name: Validate PR commits with commitlint
