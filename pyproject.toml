@@ -1,0 +1,174 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ecat"
+description = "ElectroCat: A Python toolkit for analyzing molecular and surface electrocatalysts in solvated and ion-rich environments"
+version = "0.1.0"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Sudheesh Kumar Ethirajan", email = "sethirajan@ucdavis.edu" },
+]
+maintainers = [
+    { name = "Sudheesh Kumar Ethirajan", email = "sethirajan@ucdavis.edu" },
+]
+requires-python = ">=3.12"
+
+keywords = [
+    "catalysts",
+    "electrocatalysis",
+    "solvation",
+    "interfaces",
+    "reactions",
+    "adsorption",
+    "polarization",
+    "charge transfer",
+    "electrochemistry",
+    "density functional theory",
+    "atomistic simulations",
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Materials Science",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: Unix",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "License :: OSI Approved :: BSD License",
+]
+
+dependencies = [] # runtime dependencies go here
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4.1",
+    "ruff>=0.12.3",
+    "mypy>=1.17.0",
+    "pyright>=1.1.403",
+    "black>=25.1.0",
+    "isort>=6.0.1",
+    "docformatter>=1.7.7",
+    "pre-commit>=4.2.0",
+]
+
+docs = [
+    "blacken-docs>=1.19.1",
+    "mkdocs-material>=9.6.15",
+    "mkdocstrings[python]>=0.29.1",
+    "mkdocs-gen-files>=0.5.0",
+    "mkdocs-literate-nav>=0.6.2",
+    "pillow>=11.3.0",
+    "cairosvg>=2.8.2",
+    "mkdocs-glightbox>=0.4.0",
+]
+
+[project.urls]
+repository = "https://github.com/skethirajan/ElectroCat"
+documentation = "https://skethirajan.com/ecat/"
+changelog = "https://github.com/skethirajan/ElectroCat/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ecat"] # can be extended with more subpackages if needed
+
+[tool.setuptools.package-data] # if using subpackages, each subpackage can have its own data files
+ecat = ["py.typed"]
+
+[tool.ruff]
+extend-include = ["*.ipynb"]
+
+[tool.ruff.lint]
+select = [
+    "A",    # flake8-builtins
+    "ARG",  # flake8-unused-arguments
+    "B",    # flake8-bugbear
+    "C4",   # flake8-comprehensions
+    "DTZ",  # flake8-datetimez
+    "E",    # pycodestyle error
+    "F",    # pyflakes
+    "FA",   # flake8-future-annotations
+    "I",    # isort
+    "ICN",  # flake8-import-conventions
+    "ISC",  # flake8-implicit-str-concat
+    "NPY",  # numpy-specific rules
+    "PD",   # pandas-vet
+    "PERF", # perflint
+    "PIE",  # flake8-pie
+    "PL",   # pylint
+    "PT",   # flake8-pytest-style
+    "PTH",  # flake8-use-pathlib
+    "PYI",  # flake8-pyi
+    "Q",    # flake8-quotes
+    "RET",  # flake8-return
+    "RSE",  # flake8-raise
+    "RUF",  # Ruff-specific rules
+    "SIM",  # flake8-simplify
+    "T20",  # flake8-print
+    "TID",  # flake8-tidy-imports
+    "UP",   # pyupgrade
+    "W",    # pycodestyle warning
+]
+ignore = [
+    "A005",    # Module shadows
+    "E501",    # Line too long
+    "ISC001",  # single-line-implicit-string-concatenation
+    "PLR",     # Design related pylint codes
+    "PERF203", # try-except-in-loop
+    "RET505",  # Unnecessary `elif` after `return`
+    "PTH208",  # os-listdir
+    "PLC0415", # `import` should be at the top-level of a file
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.isort]
+known-first-party = ["ecat"]
+required-imports = ["from __future__ import annotations"]
+split-on-trailing-comma = false
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**" = ["ANN", "ARG", "D", "E402", "PTH", "S101"]
+
+[tool.ruff.format]
+docstring-code-format = false
+
+[tool.mypy]
+ignore_missing_imports = true
+namespace_packages = true
+explicit_package_bases = true
+no_implicit_optional = false
+disable_error_code = "annotation-unchecked"
+
+[tool.docformatter]
+pre-summary-newline = true
+black = true
+style = "numpy"
+
+[tool.black]
+exclude = '''
+/(
+    \.git
+  | \.tox
+)/
+'''
+skip-magic-trailing-comma = true
+
+[tool.isort]
+profile = 'black'
+skip_gitignore = true
+
+[tool.pyright]
+include = ["src"]
+exclude = ["**/__pycache__"]

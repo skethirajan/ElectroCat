@@ -1,0 +1,49 @@
+{
+  // Ruff configuration
+  "ruff.configuration": "pyproject.toml",
+  "ruff.nativeServer": "on",
+  "ruff.organizeImports": true,
+  "ruff.fixAll": true,
+
+  // Notebooks
+  "notebook.formatOnSave.enabled": true,
+  "notebook.codeActionsOnSave": {
+    "notebook.source.fixAll": "explicit",
+    "notebook.source.organizeImports": "explicit"
+  },
+
+  // Python formatting and linting
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll": "explicit"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+
+  // Allow src-layout imports without needing PYTHONPATH hacks
+  "python.analysis.extraPaths": ["src"],
+
+  // Point to uv venv Python interpreter in nested environment
+  "python.defaultInterpreterPath": ".venv/bin/python",
+
+  // Optional: useful for HPC shells (exposes `src` to scripts run from root)
+  "terminal.integrated.env.linux": {
+    "PYTHONPATH": "${workspaceFolder}/src"
+  },
+
+  // YAML schemas for MkDocs
+  "yaml.schemas": {
+    "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+  },
+
+  "yaml.customTags": [
+    "!ENV scalar",
+    "!ENV sequence",
+    "!relative scalar",
+    "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
+    "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
+    "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
+  ]
+}

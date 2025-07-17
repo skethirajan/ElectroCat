@@ -1,0 +1,50 @@
+ci:
+  autoupdate_schedule: monthly
+  autofix_commit_msg: pre-commit auto-fixes
+  autoupdate_commit_msg: pre-commit autoupdate
+
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.3
+    hooks:
+      - id: ruff
+        args: [--fix, --unsafe-fixes]
+        files: ^(src|tests|scripts|notebooks)/
+      - id: ruff-format
+        files: ^(src|tests|scripts|notebooks)/
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-added-large-files
+        args: ["--maxkb=2000"]
+
+  - repo: https://github.com/adamchainz/blacken-docs
+    rev: 1.19.1
+    hooks:
+      - id: blacken-docs
+        files: \.(md|py)$
+
+  - repo: https://github.com/PyCQA/docformatter
+    rev: v1.7.7
+    hooks:
+      - id: docformatter
+        args: ["--in-place", "--recursive", "--style", "numpy"]
+        files: ^(src)/
+
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.8.1
+    hooks:
+      - id: nbstripout
+        args: ["--keep-output"]
+        files: ^(notebooks)/
+
+  - repo: local  # lint commit messages
+    hooks:
+      - id: commitlint
+        name: commitlint (enforce conventional commits)
+        entry: npx --yes --no-install commitlint --edit
+        language: system
+        stages: [commit-msg]

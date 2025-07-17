@@ -1,0 +1,31 @@
+repository:
+  name: ElectroCat
+  description: A Python toolkit for analyzing molecular and surface electrocatalysts in solvated and ion-rich environments
+  private: false
+  default_branch: main
+  has_issues: true
+  has_wiki: true
+  has_projects: true
+  delete_branch_on_merge: true
+  allow_squash_merge: true
+  allow_merge_commit: false
+  allow_rebase_merge: false
+
+branches:
+  - name: main
+    protection:
+      required_status_checks:
+        strict: true  # Require PRs to be up-to-date before merging
+        contexts:
+          - lint-commits.yml
+          - lint-pr-title.yml
+      enforce_admins: true
+      required_pull_request_reviews:
+        required_approving_review_count: 1
+        dismiss_stale_reviews: true
+        require_code_owner_reviews: false
+      restrictions: null
+      allow_force_pushes: false
+      allow_deletions: false
+    required_linear_history: true
+    required_conversation_resolution: true

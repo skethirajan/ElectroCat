@@ -1,0 +1,24 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "python",
+      "changelog-path": "CHANGELOG.md",
+      "include-v-in-tag": true,
+      "bump-major-for-breaking": true,
+      "bump-minor-pre-major": true,
+      "bump-minor-for-prerelease": true,
+      "bump-patch-for-minor-pre-release": true,
+      "bump-patch-for-prerelease": true,
+      "bump-minor-for-feature": true,
+      "bump-patch-for-fix": true,
+      "bump-patch-for-docs": true,
+      "bump-patch-for-chore": true,
+      "bump-patch-for-style": true,
+      "bump-patch-for-refactor": true,
+      "bump-patch-for-test": true,
+      "bump-patch-for-build": true,
+      "bump-patch-for-ci": true,
+      "bump-patch-for-revert": true
+    }
+  }
+}

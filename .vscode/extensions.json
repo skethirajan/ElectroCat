@@ -1,0 +1,34 @@
+{
+  "recommendations": [
+
+    // Core Extensions
+    "charliermarsh.ruff",                  // Ruff linting and formatting via LSP
+    "ms-python.python",                    // Core Python support (language server, interpreter)
+    "ms-python.vscode-pylance",            // Fast IntelliSense and static type checking
+    "njpwerner.autodocstring",             // Auto-generate Python docstrings
+    "tamasfe.even-better-toml",            // Syntax highlighting + navigation for pyproject.toml
+    "redhat.vscode-yaml",                  // YAML support for CI/CD and config files
+
+    // Optional Extensions
+    "eamodio.gitlens",                     // Git blame, history, and author insights
+    "github.vscode-github-actions",        // GitHub Actions syntax highlighting and linting
+    "github.vscode-pull-request-github",   // GitHub PR/issue UI in VSCode
+    "ms-toolsai.jupyter",                  // Notebook editor and kernel integration
+    "davidanson.vscode-markdownlint",      // Markdown linter for consistent docs (README, mkdocs)
+
+    // Other Extensions (not needed for code development)
+
+    "github.copilot",                      // AI code assistant
+    "github.copilot-chat",                 // Chat interface for Copilot
+    "donjayamanne.githistory",             // Git history viewer (partially redundant with GitLens)
+    "ms-python.debugpy",                   // Python debugger backend (included with Python ext)
+    "ms-toolsai.datawrangler",             // GUI for data wrangling (mostly pandas)
+    "ms-toolsai.jupyter-keymap",           // Notebook keybindings
+    "ms-toolsai.jupyter-renderers",        // Rich outputs in notebooks
+    "ms-toolsai.vscode-jupyter-cell-tags", // Tag-based notebook cell organization
+    "ms-toolsai.vscode-jupyter-slideshow", // Convert notebooks to slides
+    "sourcery.sourcery",                   // AI-powered code refactoring
+    "shinotatwu-ds.file-tree-generator",   // Generate markdown file trees
+    "wakatime.vscode-wakatime"             // Coding time tracking
+  ]
+}
