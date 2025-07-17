@@ -72,8 +72,6 @@ uv.lock
 # Node.js
 node_modules/
 package-lock.json
-commitlint.config.js
-package.json
 
 # Visual Studio Code
 .vscode/*

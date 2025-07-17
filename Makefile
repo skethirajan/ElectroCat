@@ -115,9 +115,7 @@ clean: ## Remove temporary files
 		.ruff_cache \
 		.uv_cache \
 		.pre-commit_cache \
-		commitlint.config.js \
 		node_modules \
-		package.json \
 		package-lock.json \
 		.coverage \
 		htmlcov \
