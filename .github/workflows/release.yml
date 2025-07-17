@@ -14,29 +14,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install release-please
-        run: npm install -g release-please
-
-      - name: Run release-please
+      - name: Run Release Please
+        uses: googleapis/release-please-action@v4
         id: release
-        run: |
-          release-please release-pr \
-            --token=${{ secrets.GITHUB_TOKEN }} \
-            --repo-url=${{ github.repository }} \
-            --default-branch=main \
-            --package-name=ecat \
-            --changelog-path=CHANGELOG.md \
-            --release-type=python
+        with:
+          release-type: python
 
-      - name: Create GitHub Release (if one was created)
-        if: steps.release.outputs.release_created == 'true'
+      - name: Show release outputs
+        if: steps.release.outputs.release_created
         run: |
-          echo "Release created: ${{ steps.release.outputs.tag_name }}"
+          echo "Release was created"
+          echo "Tag: ${{ steps.release.outputs.tag_name }}"
+          echo "SHA: ${{ steps.release.outputs.sha }}"
