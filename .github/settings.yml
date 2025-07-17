@@ -1,15 +1,22 @@
+# These settings are synced to GitHub by https://probot.github.io/apps/settings/
+
 repository:
   name: ElectroCat
   description: A Python toolkit for analyzing molecular and surface electrocatalysts in solvated and ion-rich environments
+  homepage: https://www.skethirajan.com/ElectroCat/
+  topics: electrocatalysis, electrochemistry, solvation, catalysts, interfaces, python, dft, atomistic-simulations, molecular-dynamics, materials-science
   private: false
   default_branch: main
   has_issues: true
   has_wiki: true
   has_projects: true
+  has_downloads: true
   delete_branch_on_merge: true
   allow_squash_merge: true
   allow_merge_commit: false
   allow_rebase_merge: false
+  enable_automated_security_fixes: true
+  enable_vulnerability_alerts: true
 
 branches:
   - name: main
