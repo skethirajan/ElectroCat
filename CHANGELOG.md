@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org) and uses [Conventional Commits](https://www.conventionalcommits.org) to automate versioning and changelog generation.
 
+## [0.2.0](https://github.com/skethirajan/ElectroCat/compare/v0.1.1...v0.2.0) (2025-07-18)
+
+
+### Features
+
+* setup templates for feature request and bug issue ([#9](https://github.com/skethirajan/ElectroCat/issues/9)) ([9b3b265](https://github.com/skethirajan/ElectroCat/commit/9b3b26594b9a054ec32b508bee28c500cc8cef3c)), closes [#8](https://github.com/skethirajan/ElectroCat/issues/8)
+
 ## [0.1.1](https://github.com/skethirajan/ElectroCat/compare/v0.1.0...v0.1.1) (2025-07-17)
 
 

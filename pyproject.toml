@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ecat"
 description = "ElectroCat: A Python toolkit for analyzing molecular and surface electrocatalysts in solvated and ion-rich environments"
-version = "0.1.1"
+version = "0.2.0"
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [
